@@ -31,8 +31,8 @@
     <div class="card">
       <div class="card-body">
 
-        <h4 class="card-title">Default Tab</h4>
-        <h6 class="card-subtitle">Use default tab with class <code>nav-tabs & tabcontent-border </code></h6>
+        <h4 class="card-title">Page Information</h4>
+
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item"> 

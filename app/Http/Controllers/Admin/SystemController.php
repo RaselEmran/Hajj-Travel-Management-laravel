@@ -1,12 +1,15 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Question;
 use App\Contact;
+use App\Subsciber;
 use App\Notifications\ContactMail;
+use App\Notifications\SubscribeNotify;
+use App\Mail\SubscribeMail;
 
 class SystemController extends Controller
 {
@@ -55,6 +58,9 @@ class SystemController extends Controller
 
     public function reaply(Request $request)
     {
+    	$validator = $request->validate([
+          'reaply' => ['required']
+          ]);
       $user =Contact::findOrfail($request->id);
       $messege =$request->reaply;
 
@@ -64,4 +70,40 @@ class SystemController extends Controller
 
       return response()->json(['success' => true, 'status' => 'success', 'message' => _lang('Email Send')]);
     }
+
+    public function subscibers()
+    {
+      $subs =Subsciber::all();
+      return view('admin.subscibers.index',compact('subs'));
+    }
+
+    public function subscibers_mail(Request $request)
+    {
+      if ($request->ajax()) {
+        return view('admin.subscibers.email');
+      }
+    }
+
+    public function subscibers_mailsend(Request $request)
+    {
+      if ($request->ajax()) {
+       $validator = $request->validate([
+          'subject' => ['required'],
+          'messege' => ['required'],
+          ]);
+
+       $subject =$request->subject;
+       $messege =$request->messege;
+       $subs = Subsciber::all();
+       foreach ($subs as $key => $user) {
+        Mail::to($user->sub_email)->send(new SubscribeMail($messege,$subject));
+       }
+
+
+         return response()->json(['success' => true, 'status' => 'success', 'message' => _lang('Email Send')]);
+       
+      }
+    }
+
+ 
 }

@@ -149,29 +149,11 @@ function tz_list() {
 	return $zones_array;
 }
 
-/*
- *  Used to get logo
- *  @return string
- */
-function getLogo() {
-	if (config('config.logo') && \File::exists(config('config.logo'))) {
-		return '<img src="' . asset('/' . config('config.logo')) . '" alt="' . config('config.institute_name', config('app.name', 'Satt Loan')) . '">';
-	} else {
-		return '<img src="' . asset('/asset/logo.png') . '" alt="' . config('config.institute_name', config('app.name', 'Satt Loan')) . '">';
-	}
-}
 
 /*
  *  Used to get logo
  *  @return string
  */
-function getSmLogo() {
-	if (config('config.sm_logo') && \File::exists(config('config.sm_logo'))) {
-		return '<img src="' . asset('/' . config('config.sm_logo')) . '" alt="' . config('config.institute_name', config('app.name', 'Satt Loan')) . '">';
-	} else {
-		return '<img src="' . asset('/asset/logo_sm.png') . '" alt="' . config('config.institute_name', config('app.name', 'Satt Loan')) . '">';
-	}
-}
 
 if (!function_exists('getVisIpAddr')) {
   function getVisIpAddr() { 
@@ -208,4 +190,13 @@ if (!function_exists('getVisIpDetails')) {
   	}
 
   }
+
+  function getLogo() {
+	$logo = get_option("logo");
+	if ($logo == "") {
+		return '<img src="' . asset('/asset/logo.png') . '" alt="Satt Advocate" width="100%" height="100%">';
+	}
+	return '<img src="' . asset('/storage/logo/' . $logo) . '" alt="' . get_option('company_name') . '"  width="100%" height="100%">';
+
+ }
  ?>

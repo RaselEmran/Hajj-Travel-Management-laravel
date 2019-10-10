@@ -21,7 +21,7 @@ href="{{asset('assets/node_modules/datatables.net-bs4/css/responsive.dataTables.
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                 <li class="breadcrumb-item active">{{_lang('news')}}</li>
             </ol>
-            <a href="" data-url="{{ route('admin.news.create') }}" class="btn btn-info d-none d-lg-block m-l-15" id="content_managment"><i class="ti-plus"></i> Create New</a>
+           
         </div>
     </div>
 </div>
@@ -33,8 +33,8 @@ href="{{asset('assets/node_modules/datatables.net-bs4/css/responsive.dataTables.
 <!-- Basic initialization -->
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Data Table</h4>
-        <h6 class="card-subtitle">Data table example</h6>
+        <h4 class="card-title">News List</h4>
+        <h6 class="card-subtitle"> <a href="" data-url="{{ route('admin.news.create') }}" class="btn btn-info  m-l-15" id="content_managment"><i class="ti-plus"></i> Create New</a></h6>
         <div class="table-responsive m-t-40">
             <table class="table table-bordered table-striped content_managment_table" data-url="{{ route('admin.news.datatable') }}">
             <thead>

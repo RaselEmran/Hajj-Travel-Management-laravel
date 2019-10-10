@@ -22,11 +22,10 @@
                                 
                                      <li class="{{ Request::is('hajj') ? ' active' : '' }}"><a href="{{ route('hajj') }}">Hajj </a> 
                                      </li>
-                                    <li class="has-dropdown"><a href="#">Servics</a>
+                                    <li class="has-dropdown"><a href="">Servics</a>
                                     <ul class="sub-menu">
-                                        <li><a href="#">Air Ticket Booking</a></li>
-                                        <li><a href="#">Visa Processing</a></li>
-                                        <li><a href="#">Hotel Booking</a></li>
+                                        <li><a href="{{ route('air_ticket') }}">Air Ticket Booking</a></li>
+                                        <li><a href="">Visa Processing</a></li>
                                     </ul>
                                      </li>
 

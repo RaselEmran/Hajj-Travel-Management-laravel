@@ -481,3 +481,5 @@ $('.gallery-popup').magnificPopup({
     
     
 })(jQuery);	
+
+

@@ -14,6 +14,8 @@ use App\News;
 use App\Comment;
 use App\Contact;
 use App\Question;
+use App\Subsciber;
+use App\AirTicket;
 
 class HomeController extends Controller
 {
@@ -203,5 +205,64 @@ class HomeController extends Controller
     return response()->json(['success' => true, 'status' => 'success', 'message' => _lang('Thank For Your Feedback')]);
 
   }
+  }
+
+  public function subscibers(Request $request)
+  {
+    if ($request->ajax()) {
+        $validator = $request->validate([
+            'sub_email' => ['required', 'string', 'email', 'max:255', 'unique:subscibers'],
+        ]);
+
+        $subs =new Subsciber;
+        $subs->sub_email=$request->sub_email;
+        $subs->save();
+         return response()->json(['success' => true, 'status' => 'success', 'message' => _lang('Thank For Subscibe')]);
+
+    }
+  }
+
+  //
+  public function air_ticket()
+  {
+    $about = Page::where('key', 'about')->select('key','value')->first();
+        $aboutinfo =null;
+
+     if ($about) {
+        $aboutinfo=json_decode($about->value);
+     }
+    return view('pages.air_ticket',compact('aboutinfo'));
+  }
+
+  //
+  public function book_ticket(Request $request)
+  {
+    if ($request->ajax()) {
+        $validator = $request->validate([
+            'name' => ['required', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:air_tickets'],
+            'phone' => ['required', 'max:12'],
+            'departure_city' => ['required'],
+            'destination_city' => ['required'],
+            'departure_date' => ['required', 'date'],
+            'arrival_date' => ['required', 'date'],
+            'numberz_of_persons' => ['required', 'numeric'],
+        ]);
+
+        $air =new AirTicket;
+        $air->name =$request->name;
+        $air->email =$request->email;
+        $air->phone =$request->phone;
+        $air->departure_city =$request->departure_city;
+        $air->destination_city =$request->destination_city;
+        $air->departure_date =$request->departure_date;
+        $air->arrival_date =$request->arrival_date;
+        $air->arrival_date =$request->arrival_date;
+        $air->numberz_of_persons =$request->numberz_of_persons;
+        $air->message =$request->message;
+        $air->save();
+
+        return response()->json(['success' => true, 'status' => 'success', 'message' => _lang('Thank For  Submit We will Contact you as soon as posible')]);
+    }
   }
 }

@@ -20,7 +20,7 @@ href="{{asset('assets/node_modules/datatables.net-bs4/css/responsive.dataTables.
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                 <li class="breadcrumb-item active">{{_lang('service')}}</li>
             </ol>
-            <a href="{{ route('admin.service.create') }}" class="btn btn-info d-none d-lg-block m-l-15"><i class="ti-plus"></i> Create New</a>
+            <a href="{{ route('admin.service.create') }}" class="btn btn-info  d-lg-block m-l-15"><i class="ti-plus"></i> Create New</a>
         </div>
     </div>
 </div>
@@ -32,8 +32,8 @@ href="{{asset('assets/node_modules/datatables.net-bs4/css/responsive.dataTables.
 <!-- Basic initialization -->
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Data Table</h4>
-        <h6 class="card-subtitle">Data table example</h6>
+        <h4 class="card-title">Slider Information</h4>
+
         <div class="table-responsive m-t-40">
             <table class="table table-bordered table-striped content_managment_table" data-url="{{ route('admin.service.datatable') }}">
                 <thead>

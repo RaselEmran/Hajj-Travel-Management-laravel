@@ -11,13 +11,13 @@ href="{{asset('assets/node_modules/datatables.net-bs4/css/responsive.dataTables.
 <!-- ============================================================== -->
 <div class="row page-titles">
   <div class="col-md-5 align-self-center">
-    <h4 class="text-themecolor">Dashboard 1</h4>
+    <h4 class="text-themecolor">Role Permission</h4>
   </div>
   <div class="col-md-7 align-self-center text-right">
     <div class="d-flex justify-content-end align-items-center">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-        <li class="breadcrumb-item active">Dashboard 1</li>
+        <li class="breadcrumb-item active">Role Permission</li>
       </ol>
     </div>
   </div>

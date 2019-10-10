@@ -31,8 +31,8 @@
     <div class="card">
       <div class="card-body">
 
-        <h4 class="card-title">Default Tab</h4>
-        <h6 class="card-subtitle">Use default tab with class <code>nav-tabs & tabcontent-border </code></h6>
+        <h4 class="card-title">System Setting</h4>
+
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item"> 
@@ -104,11 +104,23 @@
                 {!! load_language( get_option('language') ) !!}
               </select>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
              {{ Form::label('land_mark', _lang('land_mark') , ['class' => 'col-form-label']) }}
              {{ Form::text('land_mark', get_option('land_mark'), ['class' => 'form-control', 'placeholder' => _lang('land_mark')]) }}
            </div>
-           <div class="col-md-6">
+
+            <div class="col-md-4">
+             {{ Form::label('currency_symbol', _lang('currency_symbol') , ['class' => 'col-form-label']) }}
+             {{ Form::text('currency_symbol', get_option('currency_symbol'), ['class' => 'form-control', 'placeholder' => _lang('currency_symbol')]) }}
+           </div>
+           <div class="col-md-4">
+              <div class="form-group">
+             {{ Form::label('pop_up', _lang('pop_up') , ['class' => 'col-form-label']) }}
+               {{ Form::select('pop_up',['ON' => 'ON','Off'=>'Off'],  get_option('pop_up'), ['class' => 'form-control select', 'data-placeholder' =>  _lang('pop_up'), 'required' => '', 'data-parsley-errors-container' => '#parsley_district_error_area']) }}
+                <span id="parsley_district_error_area"></span>
+           </div>
+           </div>
+           <div class="col-md-12">
             {{ Form::label('address', _lang('address') , ['class' => 'col-form-label']) }}
             {{ Form::textarea('address', get_option('address'), ['class' => 'form-control', 'rows'=>3]) }}
           </div>

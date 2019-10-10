@@ -160,7 +160,16 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
         }); 
  
     });
+    //Booking::::::::::::::::::::::::::
+     Route::group(['as' => 'book.', 'prefix' => 'book'], function () {
 
+         Route::get('/', 'BookingController@index')->name('index');
+         Route::get('/client/{id}', 'BookingController@client')->name('client');
+         Route::get('/packege/{id}', 'BookingController@packege')->name('packege');
+         Route::delete('/delete/{id}', 'BookingController@destroy')->name('delete');
+
+
+        }); 
      //System::::::::::::::::::::::::::
      Route::get('/faq','SystemController@index')->name('faq');
      Route::get('/ans/{id}','SystemController@answer')->name('faq.ans');
@@ -169,6 +178,14 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
      Route::get('/messege','SystemController@messege')->name('messege');
      Route::get('/messege/review/{id}','SystemController@review')->name('messege.review');
      Route::post('/messege/review','SystemController@reaply')->name('messege.reaply');
+     //Subscriber:::::::::::::::::::::::::::
+     Route::get('/subscibers','SystemController@subscibers')->name('subscibers');
+     Route::get('/subscibers/mail','SystemController@subscibers_mail')->name('subscibers.mail');
+     Route::post('/subscibers/mail','SystemController@subscibers_mailsend')->name('subscibers.send_mail');
+     //Air Ticket:::::::::::::::::::::::::::::::
+     Route::get('/air-ticket','SystemController@air_ticket')->name('air_ticket');
+     Route::get('/air-ticket/mail','SystemController@airticket_mail')->name('air_ticket.mail');
+     Route::post('/air-ticket/mail','SystemController@airticket_mailsend')->name('air_ticket.send_mail');
 
 });
 
@@ -188,6 +205,9 @@ Route::get('/news-details/{slug}/{id}','HomeController@news_details')->name('new
 Route::get('contact','HomeController@contact')->name('contact');
 Route::post('contact','HomeController@post_contact')->name('post_contact');
 Route::post('question','HomeController@question')->name('question');
+Route::post('subscibers','HomeController@subscibers')->name('subscibers');
+Route::get('air-ticket','HomeController@air_ticket')->name('air_ticket');
+Route::post('air-ticket','HomeController@book_ticket')->name('book_ticket');
 
 });
 

@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset(get_option('favicon')?'storage/favicon/'.get_option('favicon'):'assets/images/favicon.png')}}">
     <title>{{ isset($title) ? $title .' | '. config('app.name', 'Laravel') :  config('app.name', 'Laravel')}}</title>
     <link rel="canonical" href="https://www.wrappixel.com/templates/elegant-admin/" />
     <!-- This page CSS -->
@@ -111,7 +111,7 @@
     <div class="preloader">
         <div class="loader">
             <div class="loader__figure"></div>
-            <p class="loader__label">Elegant admin</p>
+            <p class="loader__label">{{ get_option('site_title')}}</p>
         </div>
     </div>
     <!-- ============================================================== -->
@@ -164,7 +164,7 @@
    <!-- footer -->
    <!-- ============================================================== -->
    <footer class="footer">
-    © 2019 Elegent Admin by wrappixel.com
+    © 2019 {{ get_option('company_name')}}
 </footer>
 <!-- ============================================================== -->
 <!-- End footer -->

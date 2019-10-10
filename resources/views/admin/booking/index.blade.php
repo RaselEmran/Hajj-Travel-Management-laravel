@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => _lang('service-slider'), 'modal' => 'lg'])
+@extends('layouts.app', ['title' => _lang('Booking'), 'modal' => 'xl'])
 @push('admin.css')
 <link rel="stylesheet" type="text/css"
 href="{{asset('assets/node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css')}}">
@@ -12,15 +12,15 @@ href="{{asset('assets/node_modules/datatables.net-bs4/css/responsive.dataTables.
 <!-- ============================================================== -->
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">{{_lang('service-slider')}}</h4>
+        <h4 class="text-themecolor">Dashboard</h4>
     </div>
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                <li class="breadcrumb-item active">{{_lang('service-slider')}}</li>
+                <li class="breadcrumb-item active">{{_lang('Booking')}}</li>
             </ol>
-            <a href="{{ route('admin.service-slider.create') }}" class="btn btn-info  d-lg-block m-l-15"><i class="ti-plus"></i> Create New</a>
+         
         </div>
     </div>
 </div>
@@ -32,19 +32,33 @@ href="{{asset('assets/node_modules/datatables.net-bs4/css/responsive.dataTables.
 <!-- Basic initialization -->
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Service Slider</h4>
+        <h4 class="card-title">Booking List</h4>
         <div class="table-responsive m-t-40">
-            <table class="table table-bordered table-striped content_managment_table" data-url="{{ route('admin.service-slider.datatable') }}">
+            <table class="table table-bordered table-striped" id="sampleTable">
                 <thead>
                    <tr>
-                    <th>{{_lang('id')}}</th>
-                    <th>{{_lang('image')}}</th>
-                    <th>{{_lang('description')}}</th>
-                    <th>{{_lang('status')}}</th>
-                    <th>{{_lang('action')}}</th>
-                   </tr>
+                    <th>{{_lang('Package Name')}}</th>
+                    <th>{{_lang('Client Name')}}</th>
+                    <th>{{_lang('Booking Date')}}</th>
+                    <th>{{_lang('Action')}}</th>
+                </tr>
             </thead>
+            <tbody>
+               @foreach($book as $all)
+               <tr>
+                  <td>{{$all->package->name}}</td>
+                  <td>{{$all->user->name}}</td>
+                  <td>{{$all->created_at->format('F-d-Y')}}</td>
+                  <td>
+                      <a href=""  id="content_managment" data-url="{{ route('admin.book.client',$all->id) }}" class="btn btn-info" style="width:100%;margin-bottom:3px;">Client Info</a>
+                      
+                      <a href=""  id="content_managment" data-url="{{ route('admin.book.packege',$all->id) }}" class="btn btn-primary" style="width:100%;margin-bottom:3px;">Package Info</a>
 
+                      <a href="" id="delete_item" data-id ="{{$all->id}}" data-url="{{route('admin.book.delete',$all->id) }}" class="btn btn-danger" style="width:100%;margin-bottom:3px;">Remove</a>
+                  </td>
+              </tr>
+            @endforeach
+        </tbody>
     </table>
 </div>
 </div>
@@ -54,7 +68,7 @@ href="{{asset('assets/node_modules/datatables.net-bs4/css/responsive.dataTables.
 @push('admin.scripts')
 <script src="{{asset('assets/node_modules/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('assets/node_modules/datatables.net-bs4/js/dataTables.responsive.min.js')}}"></script>
-<script src="{{asset('js/service_slider.js')}}"></script>
+<script src="{{asset('js/setting.js')}}"></script>
 
 <!-- start - This is for export functionality only -->
 @endpush

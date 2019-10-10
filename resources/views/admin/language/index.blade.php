@@ -12,7 +12,7 @@ href="{{asset('assets/node_modules/datatables.net-bs4/css/responsive.dataTables.
 <!-- ============================================================== -->
 <div class="row page-titles">
     <div class="col-md-5 align-self-center">
-        <h4 class="text-themecolor">Dashboard</h4>
+        <h4 class="text-themecolor">{{_lang('language')}}</h4>
     </div>
     <div class="col-md-7 align-self-center text-right">
         <div class="d-flex justify-content-end align-items-center">
@@ -20,7 +20,7 @@ href="{{asset('assets/node_modules/datatables.net-bs4/css/responsive.dataTables.
                 <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
                 <li class="breadcrumb-item active">{{_lang('language')}}</li>
             </ol>
-            <a href="" class="btn btn-info d-none d-lg-block m-l-15" id="content_managment" data-url ="{{ route('admin.language.create') }}"><i class="ti-plus"></i> Create New</a>
+            
         </div>
     </div>
 </div>
@@ -32,8 +32,8 @@ href="{{asset('assets/node_modules/datatables.net-bs4/css/responsive.dataTables.
 <!-- Basic initialization -->
 <div class="card">
     <div class="card-body">
-        <h4 class="card-title">Data Table</h4>
-        <h6 class="card-subtitle">Data table example</h6>
+        <h4 class="card-title">Local Language</h4>
+        <h6 class="card-subtitle"><a href="" class="btn btn-info  m-l-15" id="content_managment" data-url ="{{ route('admin.language.create') }}"><i class="ti-plus"></i> Create New</a></h6>
         <div class="table-responsive m-t-40">
             <table class="table table-bordered table-striped" id="sampleTable">
                 <thead>
