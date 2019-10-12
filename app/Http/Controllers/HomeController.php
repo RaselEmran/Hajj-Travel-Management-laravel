@@ -16,6 +16,8 @@ use App\Contact;
 use App\Question;
 use App\Subsciber;
 use App\AirTicket;
+use Carbon\Carbon;
+Use Cache;
 
 class HomeController extends Controller
 {
@@ -173,7 +175,6 @@ class HomeController extends Controller
             'email' => ['required', 'string', 'email', 'max:255'],
             'phone' => ['required','numeric'],
             'subject' => ['required','max:255'],
-            'messege' => ['required','string']
         ]);
 
         $contact = New Contact;
@@ -183,6 +184,9 @@ class HomeController extends Controller
         $contact->subject =$request->subject;
         $contact->messege =$request->messege;
         $contact->save();
+        $expiresAt = Carbon::now()->addMinutes(60);
+
+        Cache::put('contact', $contact, $expiresAt);
         return response()->json(['success' => true, 'status' => 'success', 'message' => _lang('Thank For Your Response')]);
       }
      }

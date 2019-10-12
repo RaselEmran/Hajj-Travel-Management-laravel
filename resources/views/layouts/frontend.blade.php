@@ -230,7 +230,7 @@
  <script src="{{ asset('js/parsley.min.js') }}"></script>
  <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 
- @if (get_option('pop_up')=='ON')
+ @if (get_option('pop_up')=='ON' && !Cache::has('contact'))
  <script type="text/javascript">
   $(document).ready(function() {
     $("#myModal").modal('show');
@@ -382,6 +382,7 @@
 
                 });
                 $("#modal")[0].reset();
+                $("#myModal").modal('close');
                 if (data.goto) {
                  setTimeout(function(){
 

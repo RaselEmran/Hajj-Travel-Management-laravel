@@ -10,12 +10,18 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['middleware' => ['install']], function () {
+  Route::group(['middleware' => ['install']], function () {
 
 
-Route::get('admin/login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
-Route::post('admin/login', 'Admin\Auth\LoginController@login');
-Route::post('admin/logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
+  Route::get('admin/login', 'Admin\Auth\LoginController@showLoginForm')->name('admin.login');
+  Route::post('admin/login', 'Admin\Auth\LoginController@login');
+  Route::post('admin/logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
+
+ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
+ Route::post('password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['auth:admin']], function () {
 
      Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
@@ -184,12 +190,12 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'namespace' => 'Admin', 'mi
      Route::post('/subscibers/mail','SystemController@subscibers_mailsend')->name('subscibers.send_mail');
      //Air Ticket:::::::::::::::::::::::::::::::
      Route::get('/air-ticket','SystemController@air_ticket')->name('air_ticket');
-     Route::get('/air-ticket/mail','SystemController@airticket_mail')->name('air_ticket.mail');
+     Route::get('/air-ticket/mail/{id}','SystemController@airticket_mail')->name('air_ticket.mail');
      Route::post('/air-ticket/mail','SystemController@airticket_mailsend')->name('air_ticket.send_mail');
 
 });
 
-Auth::routes();
+// Auth::routes();
 // Route::get('/', function () {
 //     return view('welcome');
 // });

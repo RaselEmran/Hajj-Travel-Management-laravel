@@ -48,9 +48,20 @@
                             </ul>
                         </li>
 
-                        <li> 
-                            <a class="waves-effect waves-dark" href="{{ route('admin.book.index') }}" aria-expanded="false"><i class="ti-book"></i><span class="hide-menu">{{_lang('Booking')}}</span></a>
+                         <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-book"></i></i><span class="hide-menu">{{_lang('Book')}}</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{ route('admin.book.index') }}">
+                                    {{_lang('Package Book')}} <i class=" ti-hand-open"></i></a>
+                                </li>
+
+                                <li><a href="{{ route('admin.air_ticket') }}">
+                                    {{_lang('Air Ticket')}} <i class=" ti-hand-open"></i></a>
+                                </li>
+                               
+                    
+                            </ul>
                         </li>
+
 
                            <li> <a class="waves-effect waves-dark" href="{{ route('admin.slider.index') }}" aria-expanded="false"><i class=" ti-layout-slider"></i><span class="hide-menu">{{_lang('Slider')}}</span></a>
                         </li>

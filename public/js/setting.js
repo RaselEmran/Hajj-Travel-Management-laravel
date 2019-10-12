@@ -22,6 +22,7 @@ var DatatableButtonsHtml5 = function() {
                     $('.modal-body').html(data).fadeIn(); // load response
                     $('#modal-loader').hide();
                     _modalFormValidation();
+                     _componenteditor();
 
                 })
                 .fail(function(data) {
@@ -39,6 +40,7 @@ var DatatableButtonsHtml5 = function() {
             _componentDatePicker();
             _componentDropFile();
             _formValidation();
+            _componenteditor();
 
         }
     }

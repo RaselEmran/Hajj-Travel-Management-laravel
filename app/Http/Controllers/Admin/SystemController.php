@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Question;
 use App\Contact;
 use App\Subsciber;
+use App\AirTicket;
 use App\Notifications\ContactMail;
 use App\Notifications\SubscribeNotify;
 use App\Mail\SubscribeMail;
@@ -105,5 +106,39 @@ class SystemController extends Controller
       }
     }
 
+    //
+    public function air_ticket()
+    {
+      $ticket =AirTicket::all();
+      return view('admin.booking.air_ticket',compact('ticket'));
+    }
+
+    //
+    public function airticket_mail(Request $request,$id)
+    {
+      if ($request->ajax()) {
+        $ticket =AirTicket::findOrfail($id);
+        return view('admin.booking.air_ticketmail',compact('ticket'));
+      }
+    }
+
+    //
+    public function airticket_mailsend(Request $request)
+
+    {
+      $validator = $request->validate([
+          'subject' => ['required'],
+          'reaply' => ['required'],
+          ]);
+      $ticket =AirTicket::findOrfail($request->id);
+      $messege =$request->reaply;
+      $subject =$request->subject;
+
+     if ($ticket->email) {
+         Mail::to($ticket->email)->send(new SubscribeMail($messege,$subject));
+     }
+
+      return response()->json(['success' => true, 'status' => 'success', 'message' => _lang('Email Send')]);
+    }
  
 }
